@@ -10,18 +10,10 @@ def test():
     print("input the target value")
     target = int(input())
 
-    low = 0
-    high = len(nums) - 1
-
-    while low <= high:
-        mid = int((high + low) / 2) # I'm using binary search
-        if nums[mid] == target:
-            return mid
-        if nums[mid] < target:
-            low = mid + 1
-        else:
-            high = mid - 1
-    return low
+    for i in range(0, len(nums)):
+        if nums[i] >= target:
+            return i
+    return -1
 
 if __name__=="__main__":
     print(test())

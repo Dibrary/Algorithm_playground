@@ -11,11 +11,11 @@ def test():
         nums.append(int(input()))
 
     for i in range(0, len(nums)-1):
-        min_idx = i
+        max_idx = i
         for j in range(i, len(nums)):
-            if nums[min_idx] > nums[j]:
-                min_idx = j
-        nums[i], nums[min_idx] = nums[min_idx], nums[i]
+            if nums[max_idx] < nums[j]:
+                max_idx = j
+        nums[i], nums[max_idx] = nums[max_idx], nums[i]
     return nums
 
 def test2():
@@ -26,7 +26,7 @@ def test2():
     for s in range(0, n):
         nums.append(int(input()))
 
-    return sorted(nums)
+    return sorted(nums, reverse=True)
 
 if __name__=="__main__":
     print(test())

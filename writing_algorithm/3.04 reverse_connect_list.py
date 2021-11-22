@@ -16,7 +16,7 @@ def test(root):
     tmp.append(root.val) # 마지막에 한 번 해 줘야, 끝 노드도 들어간다.
 
     root = None
-    result_root = None
+    result_root = None # 반환용 처음 노드 저장 변수.
     for i in range(0, len(tmp)):
         if i == 0:
             root = Node(tmp.pop())
@@ -35,6 +35,6 @@ if __name__=="__main__":
 
     result = test(first)
 
-    while result != None:
+    while result != None: # 단순히 출력 보려는 용도.
         print(result.val, end=' ')
         result = result.next

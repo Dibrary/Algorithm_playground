@@ -1,3 +1,7 @@
+'''
+2개의 연결리스트로 된 값이 있다.
+이들 값을 뒤집은 후에, 더한 해당값을 리스트로 만들어 반환하자.
+'''
 
 class ListNode:
     def __init__(self, val=0, next=None):

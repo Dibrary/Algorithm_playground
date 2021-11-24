@@ -17,4 +17,5 @@ def test(nums, k):
 
 
 if __name__=="__main__":
-    print(test([7,5,9,4,2,6],4), test([1,2,3,4,5,6,7,8],6))
+    print(test([7,5,9,4,2,6],400), test([1,2,3,4,5,6,7,8],6))
+    # 이 코드 k값이 길이보다 길면 list assignment index out of range 에러남.

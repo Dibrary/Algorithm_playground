@@ -10,44 +10,82 @@ class TreeNode:
         self.left = left
         self.right = right
 
+# class Solution:
+#     def isSameTree(self, p, q):
+#         first, second = [], []
+#         queue = deque()
+#
+#         queue.append(p)
+#         while len(queue) != 0:
+#             node = queue.popleft()
+#             first.append(node.val)
+#             if node.left != None:
+#                 queue.append(node.left)
+#                 first.append(node.left.val)
+#             elif node.left == None:
+#                 first.append(0)
+#
+#             if node.right != None:
+#                 queue.append(node.right)
+#                 first.append(node.right.val)
+#             elif node.right == None:
+#                 first.append(0)
+#
+#         queue.append(q)
+#         while len(queue) != 0:
+#             node = queue.popleft()
+#             second.append(node.val)
+#             if node.left != None:
+#                 queue.append(node.left)
+#                 second.append(node.left.val)
+#             elif node.left == None:
+#                 second.append(0)
+#
+#             if node.right != None:
+#                 queue.append(node.right)
+#                 second.append(node.right.val)
+#             elif node.right == None:
+#                 second.append(0)
+#         print(first, second)
+#         return True if first == second else False
+
+
 class Solution:
     def isSameTree(self, p, q):
-        first, second = [], []
-        queue = deque()
+        queue1 = deque()
+        queue2 = deque()
 
-        queue.append(p)
-        while len(queue) != 0:
-            node = queue.popleft()
-            first.append(node.val)
-            if node.left != None:
-                queue.append(node.left)
-                first.append(node.left.val)
-            elif node.left == None:
-                first.append(0)
+        queue1.append(p)
+        queue2.append(q)
+        while len(queue1) != 0 and len(queue2) != 0:
+            node1 = queue1.popleft()
+            node2 = queue2.popleft()
 
-            if node.right != None:
-                queue.append(node.right)
-                first.append(node.right.val)
-            elif node.right == None:
-                first.append(0)
+            if node1.val == node2.val:
+                if node1.left != None and node2.left != None:
+                    queue1.append(node1.left)
+                    queue2.append(node2.left)
+                elif node1.left == None and node2.left == None:
+                    queue1.append(TreeNode(None))
+                    queue2.append(TreeNode(None))
+                if node1.right != None and node2.right != None:
+                    queue1.append(node1.right)
+                    queue2.append(node2.right)
+                elif node1.right == None and node2.right == None:
+                    queue1.append(TreeNode(None))
+                    queue2.append(TreeNode(None))
+                if node1.right == None and node1.left == None and node2.right == None and node2.right == None:
+                    return True
+            else:
+                return False
 
-        queue.append(q)
-        while len(queue) != 0:
-            node = queue.popleft()
-            second.append(node.val)
-            if node.left != None:
-                queue.append(node.left)
-                second.append(node.left.val)
-            elif node.left == None:
-                second.append(0)
+            if node1.left == None and node2.left != None:
+                return False
 
-            if node.right != None:
-                queue.append(node.right)
-                second.append(node.right.val)
-            elif node.right == None:
-                second.append(0)
-        print(first, second)
-        return True if first == second else False
+            if node1.right == None and node2.right != None:
+                return False
+        return True # [] 케이스는 통과하지 못함.. []가 뭔데?
+
 
 if __name__=="__main__":
     k = Solution()

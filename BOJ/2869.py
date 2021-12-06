@@ -6,6 +6,6 @@
 
 import math
 A, B, V = list(map(int, input().split()))
-print(math.ceil((V-A)/(A-B)+1))
+print(math.ceil((V-A)/(A-B)+1)) # ceil은 그냥 올림 이다.
 
 # 단순히 (A-B)x >= V 이런 부등식으로 풀려했다가 결과값이 안맞음.

@@ -33,4 +33,4 @@ def bfs(x, y):
     print(visited, miro)
     return visited[n-1][m-1]
 
-print(bfs(0,0)+1)
+print(bfs(0,0)+1) # 시작 부분에 visited를 0으로 놓고 시작하기 때문에 맨 마지막에 +1 을 계산해 줌.

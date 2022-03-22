@@ -37,7 +37,17 @@
 #         else:          print("0", end=" ")
 # 위 코드도 시간초과다.
 
+n = int(input())
+table = dict()
+for k in map(int, input().split()):
+    table[k] = 1
+m = int(input())
+values = list(map(int, input().split()))
 
+result = ""
+for s in values:
+    if s in table: result += "1 "
+    else:          result += "0 "
 
-
+print(result[:-1])
 

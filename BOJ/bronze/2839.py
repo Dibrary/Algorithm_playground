@@ -22,13 +22,13 @@ n = int(input())
 
 tmp = set()
 
-for i in range(n//3+1):
+for i in range(n//3+1): # 3을 1배, 2배, 3배... 차례로 빼고 나머지가 5로 나뉘는지 확인함.
     if (n-(i*3))%5 == 0:
         tmp.add(i+(n-(i*3))//5)
     else:
         tmp.add(-1)
 
-if tmp == {-1}:
+if tmp == {-1}: # -1밖에 없으면 나눠지지 않는 것이다.
     print(-1)
 else:
     tmp.remove(-1)

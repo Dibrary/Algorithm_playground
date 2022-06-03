@@ -73,3 +73,41 @@ else:
 
 # 조건은 다 맞췄으나 너무 복잡함. 함수를 통해 공통부분을 뽑아내야 한다.
 
+
+## 다른 사람 코드
+
+split_IPv6 = list(map(lambda x : x.split(':'), input().split('::')))
+IPv6 = split_IPv6[0][:]
+
+if len(split_IPv6) == 2:
+    for i in range(8-len(IPv6)-len(split_IPv6[1])):
+        IPv6.append('0000')
+    for i in split_IPv6[1]:
+        IPv6.append(i)
+
+print(":".join(map(lambda x : x.zfill(4), IPv6)))
+
+# 다른 사람 코드
+import sys
+
+
+IPv6 = list(map(str, sys.stdin.readline().strip("\n").split(":")))
+idx = []
+for i in range(len(IPv6)):
+
+    if len(IPv6[i]) == 0:
+        idx.append(i)
+        continue
+
+    if len(IPv6[i]) < 4:
+        IPv6[i] = "0" * (4 - len(IPv6[i])) + IPv6[i]
+
+
+if idx:
+    for _ in idx:
+        del IPv6[idx[0]]
+    while len(IPv6) != 8:
+        IPv6.insert(idx[0], "0000")
+
+
+print(":".join(IPv6))

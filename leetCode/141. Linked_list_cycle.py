@@ -31,3 +31,30 @@ if __name__=="__main__":
     d.next = b
 
     print(k.hasCycle(a))
+
+# 다른 시도
+
+class Solution:
+    def hasCycle(self, head):
+        cnt = 0
+
+        single = []
+        double = []
+
+        while head:
+            if cnt % 2 == 0:
+                double.append(head.val)
+                single.append(head.val)
+                head = head.next
+            else:
+                single.append(head.val)
+                head = head.next
+            cnt += 1
+
+            if single[-1] == double[-1]:
+                return True
+
+        return False
+
+# [1] 에서 True가 나와야 하는데 False가 나온다고 Wrong됨.
+

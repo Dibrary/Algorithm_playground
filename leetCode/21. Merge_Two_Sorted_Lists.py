@@ -73,4 +73,17 @@ if __name__ == "__main__":
         print(s.val)
         s = s.next
 
+
+### 책 풀이 ###
+
+class Solution:
+    def mergeTwoLists(self,l1, l2):
+        if (not l1) or (l2 and l1.val > l2.val): # l1과 l2의 값을 비교해 작은 값이 왼쪽에 오게 한다.
+            # 괄호를 치지 않을 경우 or보다 and가 먼저 계산된다.
+
+            l1, l2 = l2, l1
+        if l1:
+            l1.next = self.mergeTwoLists(l1.next, l2) # next에 그 다음 값이 엮이게 재귀 호출한다.
+        return l1
+
     

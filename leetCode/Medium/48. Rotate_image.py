@@ -7,7 +7,7 @@ class Solution:
         if len(matrix[0])%2 == 0: # 행, 또는 열의 갯수가 짝수개
 
         else: # 행, 또는 열의 갯수가 홀수개
-
+            pass
 
 
 

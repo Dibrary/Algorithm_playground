@@ -44,9 +44,6 @@ class Solution:
 
 
 
-
-
-
 class Solution:
     def isValid(self, s: str) -> bool:
         stack = []
@@ -55,5 +52,23 @@ class Solution:
             if c not in matching:
                 stack.append(c)
             elif len(stack) == 0 or stack.pop() != matching[c]:
+                return False
+        return len(stack) == 0
+
+
+### 책 풀이 코드 ###
+class Solution:
+    def isValid(self, s):
+        stack = []
+        table = {
+            ')':'(',
+            '}':'{',
+            ']':'['
+        }
+
+        for char in s:
+            if char not in table:
+                stack.append(char)
+            elif not stack or table[char] != stack.pop():
                 return False
         return len(stack) == 0

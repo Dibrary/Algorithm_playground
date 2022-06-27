@@ -38,3 +38,22 @@ class Solution:
         return True
 
 
+
+## 아래 코드도 책 코드 ##
+# 자주 쓰지 않았던 코드 표현 방식을 눈여겨보자.
+
+class Solution:
+    def isPalindrome(self, head):
+        rev = None
+        slow = fast = head
+        while fast and fast.next:
+            fast = fast.next.next
+            rev, rev.next, slow = slow, rev, slow.next # 다중할당
+        if fast:
+            slow = slow.next
+
+        while rev and rev.val == slow.val:
+            slow, rev = slow.next, rev.next
+        return not rev
+
+

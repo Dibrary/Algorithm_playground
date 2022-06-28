@@ -26,7 +26,7 @@ def maxProfit(prices):
     for price in prices: # 중요한 것은 for문 한 개 쓴 것.
 
         min_price = min(min_price, price) # 처음 값부터 설정된다. # 전체 값 중 최소 값이면 갱신.
-        profit = max(profit, price - min_price) # 전체 값 중 현재 설정된 최소값과 차이가 가장 크면 갱신.
+        profit = max(profit, price - min_price) # 전체 값 중 현재 설정된 최소값과 차이가 가장 크면 profit 갱신.
 
     return profit
 

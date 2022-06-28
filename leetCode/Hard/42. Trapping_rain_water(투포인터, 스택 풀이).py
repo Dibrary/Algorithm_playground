@@ -141,6 +141,44 @@ print(k.trap([0,1,0,2,1,0,1,3,2,1,2,1]))
 #         return volume
 
 
+### 다른 사람 코드 ###
+
+class Solution:
+    def trap(self, height):
+        left, right = 0, len(height) - 1
+        left_max, right_max = 0, 0
+
+        ans = 0
+
+        while left <= right:
+            if left_max <= right_max:
+                if height[left] >= left_max:
+                    left_max = height[left]
+                else:
+                    ans += (left_max - height[left])
+                left += 1
+            else:
+                if height[right] >= right_max:
+                    right_max = height[right]
+                else:
+                    ans += (right_max - height[right])
+                right -= 1
+
+        return ans
 
 
+class Solution:
+    def trap(self, height):
+        stack = []
+        res = 0
 
+        for i in range(len(height)):
+            while stack and height[stack[-1]] < height[i]:
+                curr = stack.pop()
+                if not stack:
+                    break
+                base = i - stack[-1] - 1
+                high = min(height[i], height[stack[-1]]) - height[curr]
+                res += base * high
+            stack.append(i)
+        return res

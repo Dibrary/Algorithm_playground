@@ -40,4 +40,25 @@ k = Solution()
 k.numIslands(grid)
 
 
+### 책 풀이 코드 ###
+
+class Solution:
+    def numIslands(self, grid):
+        def dfs(i, j): # 중첩 함수 사용. 중첩함수는 부모함수에서 선언한 변수도 유효 범위에서 사용 가능.
+            if i < 0 or i >= len(grid) or j < 0 or j >= len(grid[0]) or grid[i][j] != '1':
+                return
+            grid[i][j] = 0
+            dfs(i+1, j)
+            dfs(i-1, j)
+            dfs(i, j+1)
+            dfs(i, j-1)
+
+        count = 0
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if grid[i][j] == '1':
+                    dfs(i, j)
+                    count += 1
+        return count
+
 

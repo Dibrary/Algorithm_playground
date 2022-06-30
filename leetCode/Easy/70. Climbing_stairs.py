@@ -26,3 +26,38 @@ if __name__=="__main__":
     k = Solution()
     print(k.climbStairs(40)) # 메모이제이션 안 쓰면 40만 가도 시간이 너무 오래 걸려서 통과가 안 됨.
 
+
+
+
+### 책 풀이 ###
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        if n == 1:
+            return 1
+        if n == 2:
+            return 2
+        return self.climbStairs(n - 1) + self.climbStairs(n - 2)
+
+
+
+
+
+
+
+
+
+
+import collections
+
+
+class Solution:
+    dp = collections.defaultdict(int)
+
+    def climbStairs(self, n: int) -> int:
+        if n <= 2:
+            return n
+
+        if self.dp[n]:
+            return self.dp[n]
+        self.dp[n] = self.climbStairs(n - 1) + self.climbStairs(n - 2)
+        return self.dp[n]

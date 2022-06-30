@@ -14,3 +14,13 @@ class Solution:
             if x_bin[i] != y_bin[i]:
                 cnt += 1
         return cnt
+
+
+
+
+
+
+### 책 풀이 ###
+class Solution:
+    def hammingDistance(self, x: int, y: int) -> int:
+        return bin(x ^ y).count('1')

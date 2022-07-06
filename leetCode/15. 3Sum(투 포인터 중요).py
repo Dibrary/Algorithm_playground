@@ -102,7 +102,7 @@ class Solution:
                 elif sum > 0:
                     right -= 1
                 else:
-                    results.append([nums[i], nums[left], nums[right])
+                    results.append([nums[i], nums[left], nums[right]])
 
                     while left < right and nums[left] == nums[left + 1]:
                         left += 1

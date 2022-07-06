@@ -142,3 +142,86 @@ class Solution(object):
                 else:
                     return False
         return True
+
+
+
+
+
+
+
+from collections import deque
+from typing import Optional
+
+class Solution:
+    def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+        if root.left and root.right:
+            stack1 = deque()
+            stack2 = deque()
+            node1 = root.left
+            node2 = root.right
+            while node1 or stack1 or node2 or stack2:
+                if node1 and node2:
+                    stack1.append(node1)
+                    node1 = node1.left
+                    stack2.append(node2)
+                    node2 = node2.right
+                elif (not node1 and not node2):
+                    node1 = stack1.pop()
+                    node2 = stack2.pop()
+                    if node1.val != node2.val:
+                        return False
+                    node1 = node1.right
+                    node2 = node2.left
+                else:
+                    return False
+            return True
+
+        elif root.left == root.right:
+            return True
+        return False
+
+
+
+
+
+
+
+
+class Solution:
+    def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+        if root is None:
+            return True
+
+        return self.isMirror(root.left, root.right)
+
+    def isMirror(self, root_1, root_2):
+        if root_1 is None and root_2 is None:
+            return True
+
+        if root_1 is not None and root_2 is not None:
+            if root_1.val == root_2.val:
+                return self.isMirror(root_1.left, root_2.right) and self.isMirror(root_1.right, root_2.left)
+
+        return False
+
+
+
+
+
+
+
+class Solution:
+    def symm(self, p, q):
+        if not p and not q:
+            return True
+
+        if p and q:
+            return p.val == q.val and self.symm(p.left, q.right) and self.symm(p.right, q.left)
+
+        return False
+
+    def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+        if not root:
+            return True
+
+        return self.symm(root.left, root.right)

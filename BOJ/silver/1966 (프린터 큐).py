@@ -9,6 +9,82 @@
 
 '''
 
+# from collections import deque
+#
+# s = int(input())
+#
+# for _ in range(s):
+#     n, m = map(int, input().split()) # n은 문서 갯수, m은 궁금한 문서 위치 index
+#     arr = list(map(int, input().split()))
+#
+#     if len(arr) == 1:
+#         print(1)
+#     else:
+#         tmp = [0 for _ in range(len(arr))]
+#         tmp[m] = 1
+#         tmp = deque(tmp)
+#
+#         values = deque(arr)
+#
+#         cnt = 0
+#
+#         while values != []:
+#             v = values.popleft()
+#             idx = tmp.popleft()
+#
+#             # if sorted(list(values))[-1] > v: # 이렇게 할 필요 없다. max로 확인할 수 있음.
+#             if max(values) > v:
+#                 values.append(v)
+#                 tmp.append(idx)
+#             else:
+#                 if idx == 1:
+#                     cnt += 1
+#                     print(cnt)
+#                     break
+#                 else:
+#                     cnt += 1
+
+
+# 위 코드는 런타임 에러가 난다.
+# max(values)로 수정하고 나서는 ValueError 런타임 에러가 난다.
+
+
+# from collections import deque
+#
+# s = int(input())
+#
+# for _ in range(s):
+#     n, m = map(int, input().split()) # n은 문서 갯수, m은 궁금한 문서 위치 index
+#     arr = list(map(int, input().split()))
+#
+#     if len(arr) == 1:
+#         print(1)
+#     else:
+#         tmp = [0 for _ in range(len(arr))]
+#         tmp[m] = 1
+#         tmp = deque(tmp)
+#
+#         values = deque(arr)
+#
+#         cnt = 0
+#
+#         while values:
+#             # v = values.popleft() # 굳이 꺼낼 필요가 없다. 맨 앞 값만 비교하면 되니까.
+#             # idx = tmp.popleft()
+#
+#             if values[0] != max(values):
+#                 values.append(values.popleft())
+#                 tmp.append(tmp.popleft())
+#             else: # 최대값이 맞아
+#                 if tmp[0] == 1: # 원하는 target이라면
+#                     cnt += 1
+#                     print(cnt)
+#                     break
+#                 else:
+#                     cnt += 1
+
+# 위 코드는 시간초과 걸림. ( 무한루프 꼴이라 끝나지 않아서 시간초과 된 것. max값일 때 target여부와 관계 없이 제거를 해 줘야 함)
+
 from collections import deque
 
 s = int(input())
@@ -28,25 +104,30 @@ for _ in range(s):
 
         cnt = 0
 
-        while values != []:
-            v = values.popleft()
-            idx = tmp.popleft()
+        while values:
+            # v = values.popleft() # 굳이 꺼낼 필요가 없다. 맨 앞 값만 비교하면 되니까.
+            # idx = tmp.popleft()
 
-            # if sorted(list(values))[-1] > v: # 이렇게 할 필요 없다. max로 확인할 수 있음.
-            if max(values) > v:
-                values.append(v)
-                tmp.append(idx)
-            else:
-                if idx == 1:
-                    cnt += 1
+            if values[0] != max(values):
+                values.append(values.popleft())
+                tmp.append(tmp.popleft())
+            else: # 최대값이 맞아
+                cnt += 1
+                if tmp[0] == 1: # 원하는 target이라면
                     print(cnt)
                     break
                 else:
-                    cnt += 1
+                    values.popleft()
+                    tmp.popleft()
 
 
-# 위 코드는 런타임 에러가 난다.
-# max(values)로 수정하고 나서는 ValueError 런타임 에러가 난다.
+
+
+
+
+
+
+
 
 ## 다른 사람 코드 ##
 '''

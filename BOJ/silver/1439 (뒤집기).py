@@ -53,5 +53,33 @@ else:
     print("%d"%(min(one_cnt, zero_cnt)))
 
 
+## 다른 사람 코드 ##
+
+values = input()
+
+prev = int(values[0])
+cnt = [0, 0]
+cnt[prev] += 1
+for v in values[1:]:
+    v = int(v)
+    if prev != v:
+        cnt[v] += 1  ## end
+    prev = v
+
+print(min(cnt[0], cnt[1]))
 
 
+
+
+
+
+
+
+import sys
+input = sys.stdin.readline
+
+s = input().strip()
+split_0 = s.split("0")
+split_1 = s.split("1")
+result = min(len(split_0) - split_0.count(''), len(split_1) - split_1.count(''))
+print(result)

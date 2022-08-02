@@ -27,3 +27,16 @@ for k in my_gene:
 
 
 
+
+def binary_contains(gene, key_codon): # 2진탐색으로 들어있는지 확인하는 코드
+    low = 0
+    high = len(gene) -1
+    while low <= high:
+        mid = (low + high)//2
+        if gene[mid] == key_codon:
+            return True
+        elif gene[mid] < key_codon:
+            low = mid +1
+        else:
+            high = mid -1
+    return False

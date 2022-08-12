@@ -30,8 +30,8 @@ for _ in range(m):
 for k in range(1, n+1):
     for i in range(1, n+1):
         for j in range(1, n+1):
-            if distance[i][j] > (distance[i][k] + distance[k][j]):
-                distance[i][j] = distance[i][k] + distance[k][j]
+            if distance[i][j] > (distance[i][k] + distance[k][j]): # 누군가를 거쳐갔을 때 가장 짧은 거리가 있다면, 
+                distance[i][j] = distance[i][k] + distance[k][j] # 짧은 거리로 대체
 
 values = []
 

@@ -9,13 +9,8 @@
 '''
 
 
-
-
-
-
-
-
 ## 다른 사람 코드 ##
+
 import sys
 import collections
 

@@ -25,7 +25,7 @@ def bfs(start):
         node = q.popleft()
         for k in graph[node]:
             if result[k] == 0:
-                result[k] = node
+                result[k] = node # k라는 노드가 나오게 된 node가 parent이다.
                 q.append(k)
 
 bfs(1) # 루트노드는 1이라고 했으므로,

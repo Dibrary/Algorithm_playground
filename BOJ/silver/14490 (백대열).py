@@ -71,3 +71,24 @@ a = int(s[:s.index(':')])
 b = int(s[s.index(':') + 1:])
 l = GCD(a, b)
 print(l[0] + ':' + l[1])
+
+
+
+
+
+
+
+
+
+
+import sys
+
+n, m = map(int, sys.stdin.readline().split(':'))
+
+a = n
+b = m
+
+while m != 0:
+    n, m = m, n % m
+
+print(str(a//n) + ":" + str(b//n))

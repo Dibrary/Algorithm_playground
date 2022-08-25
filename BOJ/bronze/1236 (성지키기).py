@@ -130,6 +130,32 @@ for y in range(n):
 print(result)
 
 
+n, m = map(int, input().split())
+
+maps = []
+for _ in range(n):
+    maps.append(list(input()))
+
+result = 0
+
+def both(tmp, value):
+    return tmp == {'.'} and set(maps[y]) == {'.'}
+def single(tmp, value):
+    return tmp == {'.'} or set(maps[y]) == {'.'}
+
+f = [both, single]
+
+for i in range(2):
+    for y in range(n):
+        for x in range(m):
+            tmp = set()
+            for s in range(n):
+                tmp.add(maps[s][x])
+            if f[i](tmp, set(maps[y])):
+                maps[y][x] = 'X'
+                result += 1
+print(result)
+
 
 
 ## 다른 사람 코드 ##

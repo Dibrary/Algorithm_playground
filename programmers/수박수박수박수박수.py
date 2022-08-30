@@ -16,3 +16,28 @@ def solution(n):
             cnt += 1
             toggle = 0
     return result
+
+
+## 다른 사람 코드 ##
+def water_melon(n):
+    s = "수박" * n
+    return s[:n]
+
+
+
+
+
+
+def solution(n):
+    return "".join(["수박"[i%2] for i in range(n)])
+
+
+
+
+
+
+def water_melon(n):
+    if n%2==0:
+        return "수박"*int(n/2)
+    else:
+        return "수박"*int((n-1)/2) +"수"

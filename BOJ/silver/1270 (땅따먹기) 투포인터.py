@@ -47,31 +47,28 @@ for _ in range(n):
         print("SYJKGW")
 # 위 코드도 9%까지는 진행 되었으나, 시간초과 걸린다.
 
-import sys
-input = sys.stdin.readline
 
 n = int(input())
+
 for _ in range(n):
-    land = list(map(int, input().split()))[1:]
-    land.sort()
+    arr = list(map(int, input().split()))[1:]
+    total = len(arr) / 2
 
-    left = right = 0
-    answer = []
+    table = dict()
+    for m in arr:
+        if m not in table:
+            table[m] = 1
+        else:
+            table[m] += 1
 
-    while right < len(land):
-        if land[left] == land[right]: # 같으면 무조건 right만 진행시킴.
-            right += 1
-        else: # 다르면
-            answer.append((right - left, land[left])) # right-left로 갯수를 센다.
-            left = right
-    answer.append((right - left, land[left]))
-    answer.sort() # 갯수가지고 정렬됨.
-
-    cnt, army = answer[-1]  # 갯수가 제일 큰 값이
-    if cnt > len(land) / 2:  # 절반값보다 이상이면
-        print(army)  # 출력
-    else:
+    if max(table.values()) <= total:
         print("SYJKGW")
+    else:
+        print(max(table, key=table.get))
+
+
+
+
 
 
 ## 다른 사람 코드 ##

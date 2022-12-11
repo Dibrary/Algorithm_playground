@@ -26,5 +26,12 @@ print("%d %d"%(sum(W[-3:]),sum(K[-3:])))
 # What is difference
 
 
+def sample_generator():
+    sample_key = ['A','B','C','D']
+    source = ['molo','appl','adco']
+    for s in sample_key:
+        for o in source:
+            yield [f'{s}_{o}']
 
-# sampling code
+for k in sample_generator():
+    print(k)

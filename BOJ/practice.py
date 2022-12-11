@@ -24,7 +24,7 @@ W.sort(); K.sort()
 print("%d %d"%(sum(W[-3:]),sum(K[-3:])))
 
 
-
+# What is difference
 
 def sample_generator():
     sample_key = ['A','B','C','D']
@@ -37,10 +37,5 @@ for k in sample_generator():
     print(k)
 
 
-for k in gener():
-    print(k)
-
-
 # test sample code
 # test
-

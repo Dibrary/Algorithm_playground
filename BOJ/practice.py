@@ -25,3 +25,6 @@ print("%d %d"%(sum(W[-3:]),sum(K[-3:])))
 
 # What is difference
 
+
+
+# sampling code

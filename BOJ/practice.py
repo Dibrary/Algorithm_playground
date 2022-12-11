@@ -25,6 +25,8 @@ print("%d %d"%(sum(W[-3:]),sum(K[-3:])))
 
 
 
+# this is sample code
+
 
 
 

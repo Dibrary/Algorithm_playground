@@ -23,7 +23,6 @@ for i in range(20):
 W.sort(); K.sort()
 print("%d %d"%(sum(W[-3:]),sum(K[-3:])))
 
-
 # What is difference
 
 def sample_generator():

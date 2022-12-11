@@ -25,16 +25,3 @@ print("%d %d"%(sum(W[-3:]),sum(K[-3:])))
 
 
 
-def sample_generator():
-    sample_key = ['A','B','C','D']
-    source = ['molo','appl','adco']
-    for s in sample_key:
-        for o in source:
-            yield [f'{s}_{o}']
-
-for k in sample_generator():
-    print(k)
-
-
-# test sample code
-# test
